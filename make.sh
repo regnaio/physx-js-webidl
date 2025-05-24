@@ -2,8 +2,7 @@
 
 cd PhysX/physx/compiler/emscripten-release/
 rm sdk_source_bin/physx-js-webidl.*
-# make -j8 # `-j` fails if machine is too fast
-make -j4
+make -j8 # `-j` fails if machine is too fast
 
 cp sdk_source_bin/physx-js-webidl.js ../../../../dist/
 cp sdk_source_bin/physx-js-webidl.wasm ../../../../dist/
