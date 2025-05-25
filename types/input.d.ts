@@ -162,7 +162,9 @@ declare module PhysX {
         static voidToI32Ptr(voidPtr: unknown): PxI32Ptr;
         static voidToRealPtr(voidPtr: unknown): PxRealPtr;
         static getActorAt(base: PxActor, index: number): PxActor;
+        static getActorPtrAt(base: PxActorPtr, index: number): PxActorPtr;
         static getBounds3At(base: PxBounds3, index: number): PxBounds3;
+        static getConstraintInfoAt(base: PxConstraintInfo, index: number): PxConstraintInfo;
         static getContactPairAt(base: PxContactPair, index: number): PxContactPair;
         static getContactPairHeaderAt(base: PxContactPairHeader, index: number): PxContactPairHeader;
         static getControllerAt(base: PxController, index: number): PxController;
@@ -2977,6 +2979,7 @@ declare module PhysX {
     class SupportFunctions {
         static PxActor_getShape(actor: PxRigidActor, index: number): PxShape;
         static PxScene_getActiveActors(scene: PxScene): PxArray_PxActorPtr;
+        static PxSimulationEventCallback_getActors(actors: PxActorPtr, count: number): PxArray_PxActorPtr;
         static PxArticulationReducedCoordinate_getMinSolverPositionIterations(articulation: PxArticulationReducedCoordinate): number;
         static PxArticulationReducedCoordinate_getMinSolverVelocityIterations(articulation: PxArticulationReducedCoordinate): number;
     }

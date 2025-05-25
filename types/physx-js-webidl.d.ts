@@ -189,7 +189,9 @@ declare namespace PhysX {
         voidToI32Ptr(voidPtr: unknown): PxI32Ptr;
         voidToRealPtr(voidPtr: unknown): PxRealPtr;
         getActorAt(base: PxActor, index: number): PxActor;
+        getActorPtrAt(base: PxActorPtr, index: number): PxActorPtr;
         getBounds3At(base: PxBounds3, index: number): PxBounds3;
+        getConstraintInfoAt(base: PxConstraintInfo, index: number): PxConstraintInfo;
         getContactPairAt(base: PxContactPair, index: number): PxContactPair;
         getContactPairHeaderAt(base: PxContactPairHeader, index: number): PxContactPairHeader;
         getControllerAt(base: PxController, index: number): PxController;
@@ -3347,6 +3349,7 @@ declare namespace PhysX {
     class SupportFunctions {
         static PxActor_getShape(actor: PxRigidActor, index: number): PxShape;
         static PxScene_getActiveActors(scene: PxScene): PxArray_PxActorPtr;
+        static PxSimulationEventCallback_getActors(actors: PxActorPtr, count: number): PxArray_PxActorPtr;
         static PxArticulationReducedCoordinate_getMinSolverPositionIterations(articulation: PxArticulationReducedCoordinate): number;
         static PxArticulationReducedCoordinate_getMinSolverVelocityIterations(articulation: PxArticulationReducedCoordinate): number;
     }
