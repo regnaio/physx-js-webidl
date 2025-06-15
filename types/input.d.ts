@@ -1957,9 +1957,9 @@ declare module PhysX {
         getUpdateMode(): PxSceneQueryUpdateModeEnum;
         getStaticTimestamp(): number;
         flushUpdates(): void;
-        raycast(origin: PxVec3, unitDir: PxVec3, distance: number, hitCall: PxRaycastCallback, hitFlags?: PxHitFlags, filterData?: PxQueryFilterData): boolean;
-        sweep(geometry: PxGeometry, pose: PxTransform, unitDir: PxVec3, distance: number, hitCall: PxSweepCallback, hitFlags?: PxHitFlags, filterData?: PxQueryFilterData): boolean;
-        overlap(geometry: PxGeometry, pose: PxTransform, hitCall: PxOverlapCallback, filterData?: PxQueryFilterData): boolean;
+        raycast(origin: PxVec3, unitDir: PxVec3, distance: number, hitCall: PxRaycastCallback, hitFlags?: PxHitFlags, filterDat?: PxQueryFilterData, filterCall?: PxQueryFilterCallback): boolean;
+        sweep(geometry: PxGeometry, pose: PxTransform, unitDir: PxVec3, distance: number, hitCall: PxSweepCallback, hitFlags?: PxHitFlags, filterData?: PxQueryFilterData, filterCall?: PxQueryFilterCallback): boolean;
+        overlap(geometry: PxGeometry, pose: PxTransform, hitCall: PxOverlapCallback, filterData?: PxQueryFilterData, filterCall?: PxQueryFilterCallback): boolean;
     }
     class PxSceneSQSystem extends PxSceneQuerySystemBase {
         setSceneQueryUpdateMode(updateMode: PxSceneQueryUpdateModeEnum): void;
