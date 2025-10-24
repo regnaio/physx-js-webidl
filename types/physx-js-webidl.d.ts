@@ -1466,10 +1466,10 @@ declare namespace PhysX {
         getConstraintFlags(): PxConstraintFlags;
         setInvMassScale0(invMassScale: number): void;
         getInvMassScale0(): number;
-        setInvInertiaScale0(invInertiaScale: number): void;
-        getInvInertiaScale0(): number;
         setInvMassScale1(invMassScale: number): void;
         getInvMassScale1(): number;
+        setInvInertiaScale0(invInertiaScale: number): void;
+        getInvInertiaScale0(): number;
         setInvInertiaScale1(invInertiaScale: number): void;
         getInvInertiaScale1(): number;
         getConstraint(): PxConstraint;
@@ -1765,6 +1765,20 @@ declare namespace PhysX {
         isSet(flag: PxPvdInstrumentationFlagEnum): boolean;
         raise(flag: PxPvdInstrumentationFlagEnum): void;
         clear(flag: PxPvdInstrumentationFlagEnum): void;
+    }
+    
+    class PxPvdSceneClient {
+        setScenePvdFlag(flag: PxPvdSceneFlagEnum, value: boolean): void;
+        setScenePvdFlags(flags: PxPvdSceneFlags): void;
+        getScenePvdFlags(): PxPvdSceneFlags;
+        updateCamera(name: string, origin: PxVec3, up: PxVec3, target: PxVec3): void;
+    }
+    
+    class PxPvdSceneFlags {
+        constructor(flags: number);
+        isSet(flag: PxPvdSceneFlagEnum): boolean;
+        raise(flag: PxPvdSceneFlagEnum): void;
+        clear(flag: PxPvdSceneFlagEnum): void;
     }
     
     class PxPvdTransport {
@@ -2111,6 +2125,7 @@ declare namespace PhysX {
         getLimits(): PxSceneLimits;
         getPhysics(): PxPhysics;
         getTimestamp(): number;
+        getScenePvdClient(): PxPvdSceneClient;
         userData: unknown;
     }
     
@@ -3813,6 +3828,11 @@ declare namespace PhysX {
         'ePROFILE',
         'eMEMORY',
         'eALL',
+    }
+    enum PxPvdSceneFlagEnum {
+        'eTRANSMIT_CONTACTS',
+        'eTRANSMIT_SCENEQUERIES',
+        'eTRANSMIT_CONSTRAINTS',
     }
     enum PxQueryFlagEnum {
         'eSTATIC',

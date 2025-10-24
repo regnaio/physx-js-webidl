@@ -1299,10 +1299,10 @@ declare module PhysX {
         getConstraintFlags(): PxConstraintFlags;
         setInvMassScale0(invMassScale: number): void;
         getInvMassScale0(): number;
-        setInvInertiaScale0(invInertiaScale: number): void;
-        getInvInertiaScale0(): number;
         setInvMassScale1(invMassScale: number): void;
         getInvMassScale1(): number;
+        setInvInertiaScale0(invInertiaScale: number): void;
+        getInvInertiaScale0(): number;
         setInvInertiaScale1(invInertiaScale: number): void;
         getInvInertiaScale1(): number;
         getConstraint(): PxConstraint;
@@ -1563,6 +1563,18 @@ declare module PhysX {
         isSet(flag: PxPvdInstrumentationFlagEnum): boolean;
         raise(flag: PxPvdInstrumentationFlagEnum): void;
         clear(flag: PxPvdInstrumentationFlagEnum): void;
+    }
+    class PxPvdSceneClient {
+        setScenePvdFlag(flag: PxPvdSceneFlagEnum, value: boolean): void;
+        setScenePvdFlags(flags: PxPvdSceneFlags): void;
+        getScenePvdFlags(): PxPvdSceneFlags;
+        updateCamera(name: string, origin: PxVec3, up: PxVec3, target: PxVec3): void;
+    }
+    class PxPvdSceneFlags {
+        constructor(flags: number);
+        isSet(flag: PxPvdSceneFlagEnum): boolean;
+        raise(flag: PxPvdSceneFlagEnum): void;
+        clear(flag: PxPvdSceneFlagEnum): void;
     }
     class PxPvdTransport {
         connect(): boolean;
@@ -1882,6 +1894,7 @@ declare module PhysX {
         getLimits(): PxSceneLimits;
         getPhysics(): PxPhysics;
         getTimestamp(): number;
+        getScenePvdClient(): PxPvdSceneClient;
         userData: unknown;
     }
     class PxSceneDesc {
@@ -3431,6 +3444,11 @@ declare module PhysX {
         'PROFILE',
         'MEMORY',
         'ALL'
+    }
+    enum PxPvdSceneFlagEnum {
+        'TRANSMIT_CONTACTS',
+        'TRANSMIT_SCENEQUERIES',
+        'TRANSMIT_CONSTRAINTS'
     }
     enum PxQueryFlagEnum {
         'STATIC',
