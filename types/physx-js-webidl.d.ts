@@ -1691,6 +1691,7 @@ declare namespace PhysX {
         getAnyHit(index: number): PxOverlapHit;
         getNbTouches(): number;
         getTouch(index: number): PxOverlapHit;
+        clear(): void;
         block: PxOverlapHit;
         hasBlock: boolean;
     }
@@ -1881,6 +1882,7 @@ declare namespace PhysX {
         getAnyHit(index: number): PxRaycastHit;
         getNbTouches(): number;
         getTouch(index: number): PxRaycastHit;
+        clear(): void;
         block: PxRaycastHit;
         hasBlock: boolean;
     }
@@ -2407,6 +2409,7 @@ declare namespace PhysX {
         getAnyHit(index: number): PxSweepHit;
         getNbTouches(): number;
         getTouch(index: number): PxSweepHit;
+        clear(): void;
         block: PxSweepHit;
         hasBlock: boolean;
     }
