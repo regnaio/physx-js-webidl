@@ -1,18 +1,19 @@
 name: PhysX-JS-WebIDL - Release Library
 
 on:
+  workflow_dispatch:
   push:
     tags:
-      - '*'
+      - 'v*'
+
+permissions:
+  id-token: write  # Required for OIDC
+  contents: write
 
 jobs:
   build:
     name: Build PhysX-JS-WebIDL
     runs-on: ubuntu-latest
-    environment: publish
-    permissions:
-      contents: write
-      id-token: write
 
     steps:
       - name: Checkout Repository
@@ -43,12 +44,12 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v4
         with:
-          node-version: '20.x'
+          node-version: '20'
           registry-url: 'https://registry.npmjs.org'
-        
+
+      - name: Update npm
+        run: npm install -g npm@latest
       - name: Publish to npmjs
         working-directory: ./dist
-        run: npm publish --provenance --access public
-        env:
-          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish
 
