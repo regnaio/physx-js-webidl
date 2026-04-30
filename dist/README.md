@@ -65,9 +65,28 @@ git submodule update --init
 ./generate.sh
 
 # Build
-./generate.sh
 ./make.sh
-
-# Generate types
-npx --yes webidl-dts-gen -e -n PhysX -i PhysX/physx/source/webidlbindings/src/wasm/PhysXWasm.idl -o dist/index.d.ts
 ```
+
+To add bindings to additional PhysX interfaces you only have to edit the
+[PhysXJs.idl](https://github.com/fabmax/PhysX/blob/webidl-bindings/physx/source/webidlbindings/src/wasm/PhysXWasm.idl)
+file located in `PhysX/physx/source/webidlbindings/src/wasm/` and recompile the library.
+
+### Build with Docker
+
+The docker build also generates typescript definitions.
+
+```
+# Build the image
+docker compose up
+
+# Build Release
+docker compose run --rm builder ./make.sh
+
+# Build Profile
+docker compose run --rm builder ./make-profile.sh
+
+# Build Debug
+docker compose run --rm builder ./make-debug.sh
+```
+
